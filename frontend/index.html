@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Mini-Projet Web</title>
+    <link rel="stylesheet" href="assets/css/main/app.css">
+    <link rel="stylesheet" href="assets/css/pages/auth.css">
+    <link rel="shortcut icon" href="assets/images/logo/favicon.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/logo/favicon.png" type="image/png">
+</head>
+
+<body>
+    <div id="auth">
+
+        <div class="row h-100">
+            <div class="col-lg-5 col-12">
+                <div id="auth-left">
+                    <div class="auth-logo">
+                        <a href="#"><img src="assets/images/logo/kisspng-web-development-e-commerce-logo-electronic-busines-ecommerce-5ad142afc13966.5141508215236635357915.png" style="height: 60px;" alt="Logo"></a>
+                    </div>
+                    <h1 class="auth-title">Log in</h1>
+                    <!-- <p class="auth-subtitle mb-4">Log in with your data that you entered during registration.</p> -->
+
+                    <form method="post" id="user-form">
+                        
+                        <div id="tablebody">
+                            <!-- Les données seront insérées ici -->
+                        </div>
+
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="text" class="form-control form-control-xl" placeholder="Username" name="nom">
+                            <div class="form-control-icon">
+                                <i class="bi bi-person"></i>
+                            </div>
+                        </div>
+                        <div class="form-group position-relative has-icon-left mb-4">
+                            <input type="password" class="form-control form-control-xl" placeholder="Password" name="pass">
+                            <div class="form-control-icon">
+                                <i class="bi bi-shield-lock"></i>
+                            </div>
+                        </div>
+                       
+                        <input type="submit" value="Log in" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-7 d-none d-lg-block">
+                <div id="auth-right">
+                    <br>
+                    <br>
+                    <br>
+                    <img src="assets/images/login.png" style="height: 600px;" alt="Logo">
+                </div>
+            </div>
+        </div>
+       
+         <script>
+            document.getElementById('user-form').addEventListener('submit', function(e) {
+  e.preventDefault(); // Empêche la soumission du formulaire par défaut
+
+  fetch('http://192.168.42.201:4000/verifier.php', {
+    method: 'POST',
+    body: new FormData(this) // Récupère les données du formulaire
+  })
+    .then(response => response.text())
+    .then(data => {
+      if (data.includes('incorrect')) {
+        document.getElementById('tablebody').innerHTML =
+          '<div class="alert alert-light-success color-success" id="alertsucces">' +
+          '<i class="bi bi-check-circle"></i> Login ou mot de passe incorrect.' +
+          '</div>';
+      } else {
+        // Redirection vers une autre page
+        window.location.href = 'http://192.168.42.201/Presentation/dashboard.html';
+      }
+    })
+    .catch(error => {
+      console.error('Une erreur s\'est produite:', error);
+    });
+});
+            </script>
+			
+    </div>
+</body>
+
+</html>

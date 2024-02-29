@@ -1,0 +1,94 @@
+    
+    
+    
+    <!-- ----------------------------------------------------------------------------------------- -->
+    <!--                                          Header                                           -->
+    <!-- ----------------------------------------------------------------------------------------- -->
+
+   
+
+    <!-- ----------------------------------------------------------------------------------------- -->
+    <!--                                          Container                                        -->
+    <!-- ----------------------------------------------------------------------------------------- -->
+
+    <div id="main" style="background-color: #e2e918;">
+        <br>
+        <div class="page-heading">
+            <div class="page-title">
+                <div class="row">
+                    <div class="col-12 col-md-6 order-md-1 order-last">
+                        <h3>Produits</h3>
+                        <!-- <p class="text-subtitle text-muted">Ajout d'un client </p> -->
+                    </div>
+                    <div class="col-12 col-md-6 order-md-2 order-first">
+                        <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="../dashboard.html">Dashboard</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Produits</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <section class="section">
+                <div class="card">
+
+
+
+                    <div class="card" style="color: red;">
+                        <div class="card-header">
+                            <h4 class="card-title">Affichage des produits</h4>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="email-fixed-search flex-grow-1">
+                                    <div class="form-group position-relative mb-0 has-icon-left">
+                                        <input type="text" class="form-control" placeholder="Rechercher la reference..."
+                                            id="search" onkeyup="FilterkeyWord()">
+                                        <div class="form-control-icon">
+                                            <svg class="bi" width="1.5em" height="1.5em" fill="currentColor">
+                                                <use xlink:href="../../assets/images/bootstrap-icons.svg#search"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-md table-striped" id="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Reference</th>
+                                                <th>Libelle</th>
+                                                <th>Prix</th>
+                                                <th>Quantite</th>
+                                                <th>Seuil</th>
+                                                <th>Prix Achat</th>
+                                            </tr>
+
+                                        </thead>
+                                        <tbody id="tableBody">
+                                            <!-- Les données seront insérées ici -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <script>
+                                    // Code JavaScript pour effectuer une requête Fetch vers votre fichier PHP
+                                    fetch('http://192.168.42.201:4000/afficherProduits.php')
+                                        .then(response => response.text())
+                                        .then(data => {
+                                            // Utilisez les données de l'API pour effectuer des opérations supplémentaires
+                                            document.getElementById('tableBody').innerHTML = data;
+                                        })
+                                        .catch(error => console.error(error));
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </section>
+        </div>
+
+        
