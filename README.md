@@ -1,11 +1,12 @@
 # php-html-mysql-docker
 
 ici nous avons une simple application en php, html, javascript et mysql separé en 3: 
-  backend en php
+
+    backend en php
   
-  frontend en html, css et javascript
+    frontend en html, css et javascript
   
-  base de donnée mysql
+    base de donnée mysql
   
 le backend est séparé du frontend pour nous permettre de pouvoir conteunariser chaque partie dans un container
 
