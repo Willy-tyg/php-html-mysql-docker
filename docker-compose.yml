@@ -1,0 +1,30 @@
+version: '3'
+services:
+  backend:        
+    image: backend
+    container_name: backend
+    restart: always
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html/    
+    ports:
+      - 4000:80
+    depends_on:
+      - mysql
+
+  frontend:
+    image: frontend
+    container_name: frontend
+    restart: always
+    ports:
+      - 80:80
+
+  mysql:
+    image: database
+    container_name: mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=""
+      - MYSQL_DATABASE="cloud"
+    ports:
+      - 3306:3306
+     
